@@ -11,7 +11,9 @@
     "not_found_regex": "",
     "delay_seconds": 1,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
-    "supports": ["username"]
+    "supports": [
+      "username"
+    ]
   },
   {
     "id": "gitlab",
@@ -25,7 +27,9 @@
     "not_found_regex": "",
     "delay_seconds": 1,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
-    "supports": ["username"]
+    "supports": [
+      "username"
+    ]
   },
   {
     "id": "reddit",
@@ -39,7 +43,9 @@
     "not_found_regex": "page not found",
     "delay_seconds": 2,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
-    "supports": ["username"]
+    "supports": [
+      "username"
+    ]
   },
   {
     "id": "twitter",
@@ -53,7 +59,9 @@
     "not_found_regex": "",
     "delay_seconds": 2,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
-    "supports": ["username"]
+    "supports": [
+      "username"
+    ]
   },
   {
     "id": "instagram",
@@ -67,7 +75,9 @@
     "not_found_regex": "",
     "delay_seconds": 3,
     "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 Mobile/15E148 Safari/604.1",
-    "supports": ["username"]
+    "supports": [
+      "username"
+    ]
   },
   {
     "id": "tiktok",
@@ -81,7 +91,9 @@
     "not_found_regex": "Couldn't find this account",
     "delay_seconds": 2,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
-    "supports": ["username"]
+    "supports": [
+      "username"
+    ]
   },
   {
     "id": "youtube",
@@ -95,7 +107,9 @@
     "not_found_regex": "",
     "delay_seconds": 2,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
-    "supports": ["username"]
+    "supports": [
+      "username"
+    ]
   },
   {
     "id": "linkedin",
@@ -109,7 +123,9 @@
     "not_found_regex": "",
     "delay_seconds": 3,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
-    "supports": ["username"]
+    "supports": [
+      "username"
+    ]
   },
   {
     "id": "medium",
@@ -123,7 +139,9 @@
     "not_found_regex": "",
     "delay_seconds": 1,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
-    "supports": ["username"]
+    "supports": [
+      "username"
+    ]
   },
   {
     "id": "twitch",
@@ -137,7 +155,9 @@
     "not_found_regex": "",
     "delay_seconds": 1,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
-    "supports": ["username"]
+    "supports": [
+      "username"
+    ]
   },
   {
     "id": "pinterest",
@@ -151,7 +171,9 @@
     "not_found_regex": "",
     "delay_seconds": 2,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
-    "supports": ["username"]
+    "supports": [
+      "username"
+    ]
   },
   {
     "id": "soundcloud",
@@ -165,7 +187,9 @@
     "not_found_regex": "",
     "delay_seconds": 1,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
-    "supports": ["username"]
+    "supports": [
+      "username"
+    ]
   },
   {
     "id": "spotify",
@@ -179,7 +203,9 @@
     "not_found_regex": "",
     "delay_seconds": 1,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
-    "supports": ["username"]
+    "supports": [
+      "username"
+    ]
   },
   {
     "id": "steam",
@@ -193,7 +219,9 @@
     "not_found_regex": "The specified profile could not be found",
     "delay_seconds": 1,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
-    "supports": ["username"]
+    "supports": [
+      "username"
+    ]
   },
   {
     "id": "tumblr",
@@ -207,7 +235,9 @@
     "not_found_regex": "",
     "delay_seconds": 1,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
-    "supports": ["username"]
+    "supports": [
+      "username"
+    ]
   },
   {
     "id": "flickr",
@@ -221,7 +251,9 @@
     "not_found_regex": "",
     "delay_seconds": 1,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
-    "supports": ["username"]
+    "supports": [
+      "username"
+    ]
   },
   {
     "id": "quora",
@@ -235,7 +267,9 @@
     "not_found_regex": "",
     "delay_seconds": 2,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
-    "supports": ["username"]
+    "supports": [
+      "username"
+    ]
   },
   {
     "id": "hackerrank",
@@ -249,7 +283,9 @@
     "not_found_regex": "",
     "delay_seconds": 1,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
-    "supports": ["username"]
+    "supports": [
+      "username"
+    ]
   },
   {
     "id": "stackoverflow",
@@ -263,7 +299,9 @@
     "not_found_regex": "",
     "delay_seconds": 1,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
-    "supports": ["username"]
+    "supports": [
+      "username"
+    ]
   },
   {
     "id": "devto",
@@ -277,7 +315,9 @@
     "not_found_regex": "",
     "delay_seconds": 1,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
-    "supports": ["username"]
+    "supports": [
+      "username"
+    ]
   },
   {
     "id": "codepen",
@@ -291,7 +331,9 @@
     "not_found_regex": "",
     "delay_seconds": 1,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
-    "supports": ["username"]
+    "supports": [
+      "username"
+    ]
   },
   {
     "id": "replit",
@@ -305,7 +347,9 @@
     "not_found_regex": "",
     "delay_seconds": 1,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
-    "supports": ["username"]
+    "supports": [
+      "username"
+    ]
   },
   {
     "id": "dribbble",
@@ -319,7 +363,9 @@
     "not_found_regex": "",
     "delay_seconds": 1,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
-    "supports": ["username"]
+    "supports": [
+      "username"
+    ]
   },
   {
     "id": "behance",
@@ -333,7 +379,9 @@
     "not_found_regex": "",
     "delay_seconds": 1,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
-    "supports": ["username"]
+    "supports": [
+      "username"
+    ]
   },
   {
     "id": "keybase",
@@ -347,7 +395,9 @@
     "not_found_regex": "",
     "delay_seconds": 1,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
-    "supports": ["username"]
+    "supports": [
+      "username"
+    ]
   },
   {
     "id": "hackernews",
@@ -361,7 +411,9 @@
     "not_found_regex": "No such user",
     "delay_seconds": 1,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
-    "supports": ["username"]
+    "supports": [
+      "username"
+    ]
   },
   {
     "id": "bitbucket",
@@ -375,21 +427,9 @@
     "not_found_regex": "",
     "delay_seconds": 1,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
-    "supports": ["username"]
-  },
-  {
-    "id": "gravatar",
-    "name": "Gravatar",
-    "icon_url": "https://cdn.simpleicons.org/gravatar/ffffff",
-    "url_template": "https://en.gravatar.com/{username}",
-    "check_type": "profile_url",
-    "found_status_code": 200,
-    "not_found_status_code": 404,
-    "found_regex": "",
-    "not_found_regex": "",
-    "delay_seconds": 1,
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
-    "supports": ["username", "email"]
+    "supports": [
+      "username"
+    ]
   },
   {
     "id": "pastebin",
@@ -403,7 +443,9 @@
     "not_found_regex": "",
     "delay_seconds": 1,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
-    "supports": ["username"]
+    "supports": [
+      "username"
+    ]
   },
   {
     "id": "vimeo",
@@ -417,7 +459,9 @@
     "not_found_regex": "",
     "delay_seconds": 1,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
-    "supports": ["username"]
+    "supports": [
+      "username"
+    ]
   },
   {
     "id": "producthunt",
@@ -431,6 +475,8 @@
     "not_found_regex": "",
     "delay_seconds": 1,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
-    "supports": ["username"]
+    "supports": [
+      "username"
+    ]
   }
 ]

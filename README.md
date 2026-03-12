@@ -66,11 +66,11 @@ cd frontend
 # Install dependencies (first time only)
 npm install
 
-# Start dev server (port 5173)
+# Start dev server (port 8080)
 npm run dev
 ```
 
-Open **http://localhost:5173** in your browser.
+Open **http://localhost:8080** in your browser.
 
 ---
 

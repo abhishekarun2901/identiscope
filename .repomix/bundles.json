@@ -1,0 +1,14 @@
+{
+  "bundles": {
+    "codebase-259": {
+      "name": "codebase",
+      "created": "2026-03-12T09:33:29.225Z",
+      "lastUsed": "2026-03-12T09:33:29.225Z",
+      "tags": [],
+      "files": [
+        "backend",
+        "frontend"
+      ]
+    }
+  }
+}

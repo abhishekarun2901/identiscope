@@ -11,46 +11,120 @@ import (
 )
 
 // Analyze determines account existence from an HTTP response.
+// Check order:
+//  1. NotFoundRegex match  → "not_found"
+//  2. NotFoundHeader present → "not_found"
+//  3. NotFoundStatus code   → "not_found"
+//  4. FoundStatus code      → "found" / "breached" (if IsBreachDB) / "uncertain" (regex miss)
+//  5. FoundHeader present   → "found"
+//  6. 3xx redirect          → "uncertain"
+//  7. 5xx error             → "error"
+//  8. Default               → "uncertain"
+//
+// After determining the raw status, InvertResult flips found↔not_found.
 func Analyze(resp *http.Response, body []byte, platform models.Platform, identity string) string {
 	code := resp.StatusCode
 	bodyStr := string(body)
 
-	// If a not_found_regex matches the body, it's definitely gone.
+	var status string
+
+	// 0. SPA shell guard: for "api" check_type, if the response is HTML (a client-side
+	//    SPA shell) instead of JSON, the endpoint returned the wrong content type —
+	//    regex-based detection is unreliable, so mark uncertain immediately.
+	if platform.CheckType == "api" && len(bodyStr) > 0 {
+		trimmed := strings.TrimSpace(bodyStr)
+		lower := strings.ToLower(trimmed)
+		if strings.HasPrefix(lower, "<!doctype") ||
+			strings.HasPrefix(lower, "<html") ||
+			strings.Contains(bodyStr, `<div id="app">`) ||
+			strings.Contains(bodyStr, `<div id="root">`) {
+			status = "uncertain"
+			goto invert
+		}
+	}
+
+	// 1. NotFoundRegex
 	if platform.NotFoundRegex != "" {
 		nfRe, err := compileInsensitive(platform.NotFoundRegex, identity)
 		if err == nil && nfRe.MatchString(bodyStr) {
-			return "not_found"
+			status = "not_found"
+			goto invert
 		}
 	}
 
-	// Status code check.
-	if platform.NotFoundStatus != 0 && code == platform.NotFoundStatus {
-		return "not_found"
+	// 2. NotFoundHeader
+	if platform.NotFoundHeader != "" && resp.Header.Get(platform.NotFoundHeader) != "" {
+		status = "not_found"
+		goto invert
 	}
 
+	// 3. NotFoundStatus
+	if platform.NotFoundStatus != 0 && code == platform.NotFoundStatus {
+		status = "not_found"
+		goto invert
+	}
+
+	// 4. FoundStatus
 	if platform.FoundStatus != 0 && code == platform.FoundStatus {
-		// If there's a found_regex, also require it to match.
 		if platform.FoundRegex != "" {
 			fRe, err := compileInsensitive(platform.FoundRegex, identity)
 			if err != nil || !fRe.MatchString(bodyStr) {
-				return "uncertain"
+				status = "uncertain"
+				goto invert
 			}
 		}
-		return "found"
+		// Breach-DB platforms use "breached" instead of "found"
+		if platform.IsBreachDB {
+			status = "breached"
+		} else {
+			status = "found"
+		}
+		goto invert
 	}
 
-	// 3xx redirects – could go either way.
+	// 5. FoundHeader
+	if platform.FoundHeader != "" && resp.Header.Get(platform.FoundHeader) != "" {
+		status = "found"
+		goto invert
+	}
+
+	// 6. Regex-only matches (no status code constraint set)
+	if platform.FoundRegex != "" && platform.FoundStatus == 0 {
+		fRe, err := compileInsensitive(platform.FoundRegex, identity)
+		if err == nil && fRe.MatchString(bodyStr) {
+			if platform.IsBreachDB {
+				status = "breached"
+			} else {
+				status = "found"
+			}
+			goto invert
+		}
+	}
+
+	// 7. 3xx redirects
 	if code >= 300 && code < 400 {
-		return "uncertain"
+		status = "uncertain"
+		goto invert
 	}
 
-	// 5xx server errors.
+	// 8. 5xx server errors
 	if code >= 500 {
-		return "error"
+		status = "error"
+		goto invert
 	}
 
-	// Anything else is uncertain.
-	return "uncertain"
+	status = "uncertain"
+
+invert:
+	if platform.InvertResult {
+		switch status {
+		case "found":
+			status = "not_found"
+		case "not_found":
+			status = "found"
+		}
+	}
+	return status
 }
 
 // compileInsensitive compiles a regex, substituting {username} placeholder.

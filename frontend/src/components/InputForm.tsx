@@ -10,9 +10,10 @@ interface TagInputProps {
   onRemove: (index: number) => void
   disabled?: boolean
   validate?: (value: string) => string | null
+  normalize?: (value: string) => string
 }
 
-function TagInput({ label, placeholder, tags, type, onAdd, onRemove, disabled, validate }: TagInputProps) {
+function TagInput({ label, placeholder, tags, type, onAdd, onRemove, disabled, validate, normalize }: TagInputProps) {
   const [value, setValue] = useState('')
   const [validationError, setValidationError] = useState<string | null>(null)
   const inputRef = useRef<HTMLInputElement>(null)
@@ -25,7 +26,8 @@ function TagInput({ label, placeholder, tags, type, onAdd, onRemove, disabled, v
       if (err) { setValidationError(err); return }
     }
     setValidationError(null)
-    onAdd(trimmed)
+    const toAdd = normalize ? normalize(trimmed) : trimmed
+    onAdd(toAdd)
     setValue('')
   }
 
@@ -90,15 +92,23 @@ function TagInput({ label, placeholder, tags, type, onAdd, onRemove, disabled, v
 
 // Validators
 const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-const phoneRe = /^\+?[1-9]\d{6,14}$/
 const usernameRe = /^[a-zA-Z0-9._\-]+$/
+
+// Normalize a phone number to E.164: strip everything except digits and +, prepend + if missing
+function normalizePhone(v: string): string {
+  let clean = v.replace(/[^\d+]/g, '')
+  if (clean && !clean.startsWith('+')) {
+    clean = '+' + clean
+  }
+  return clean
+}
 
 function validateEmail(v: string) {
   return emailRe.test(v) ? null : 'Invalid email address'
 }
 function validatePhone(v: string) {
-  const normalized = v.replace(/[\s\-()]/g, '')
-  return phoneRe.test(normalized) ? null : 'Invalid phone (use E.164 format like +1234567890)'
+  const normalized = normalizePhone(v)
+  return /^\+[1-9]\d{6,14}$/.test(normalized) ? null : 'Invalid phone — use E.164 format, e.g. +12125551234'
 }
 function validateUsername(v: string) {
   if (v.length > 50) return 'Username too long (max 50 chars)'
@@ -126,7 +136,7 @@ export default function InputForm({ usernames, emails, phones, onChangeUsernames
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
       <TagInput
-        label="👤 Usernames"
+        label="USERNAMES"
         placeholder="torvalds, alice, bob..."
         tags={usernames}
         type="username"
@@ -136,7 +146,7 @@ export default function InputForm({ usernames, emails, phones, onChangeUsernames
         disabled={disabled}
       />
       <TagInput
-        label="✉️ Email Addresses"
+        label="EMAIL"
         placeholder="alice@example.com..."
         tags={emails}
         type="email"
@@ -146,15 +156,28 @@ export default function InputForm({ usernames, emails, phones, onChangeUsernames
         disabled={disabled}
       />
       <TagInput
-        label="📱 Phone Numbers"
-        placeholder="+1234567890..."
+        label="PHONE"
+        placeholder="+12125551234..."
         tags={phones}
         type="phone"
         validate={validatePhone}
+        normalize={normalizePhone}
         onAdd={v => addTo(phones, v, onChangePhones)}
         onRemove={i => removeFrom(phones, i, onChangePhones)}
         disabled={disabled}
       />
+      {phones.length > 0 && (
+        <p style={{
+          margin: 0, fontSize: '0.72rem', color: 'var(--text-muted)',
+          background: 'rgba(250,204,21,0.06)', border: '1px solid rgba(250,204,21,0.18)',
+          borderRadius: 8, padding: '0.5rem 0.75rem', lineHeight: 1.5,
+        }}>
+          <strong style={{ color: 'var(--text-secondary)' }}>Phone coverage is limited.</strong>{' '}
+          Only a small set of platforms expose public phone-indexed profiles. Most results will be{' '}
+          <em>uncertain</em> — use the <strong>View Profile →</strong> links to verify manually.
+          Confidence badges (High / Medium / Low) indicate detection reliability per platform.
+        </p>
+      )}
     </div>
   )
 }
