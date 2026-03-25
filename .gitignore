@@ -34,3 +34,9 @@ backend/identiscope.exe
 *.bak
 *.tmp
 *~
+
+# Repomix artifacts
+.repomix/
+repomix-output.txt
+repomix-output-min.html
+repomix-output.xml
