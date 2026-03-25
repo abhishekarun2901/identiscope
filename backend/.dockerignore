@@ -1,0 +1,17 @@
+vendor/
+*.log
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+.git/
+.gitignore
+.env
+.env.*
+README.md
+.idea/
+.vscode/
+.DS_Store
